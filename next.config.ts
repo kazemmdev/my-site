@@ -1,17 +1,9 @@
 import type { NextConfig } from "next";
-import withPwa from 'next-pwa';
+import withSerwistInit from "@serwist/next";
 
 const isProd = process.env.NODE_ENV === "production"
 
-const pwaConfig = {
-  dest: "public",
-  disable: !isProd,
-  register: true,
-  dynamicStartUrl: true,
-  skipWaiting: true,
-}
-
-const nextConfig: NextConfig = withPwa(pwaConfig)({
+const nextConfig: NextConfig = {
   reactStrictMode: isProd,
   eslint: {
     ignoreDuringBuilds: true,
@@ -39,6 +31,14 @@ const nextConfig: NextConfig = withPwa(pwaConfig)({
     })
     return config
   },
+};
+
+
+const withSerwist = withSerwistInit({
+  // Note: This is only an example. If you use Pages Router,
+  // use something else that works, such as "service-worker/index.ts".
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
 });
 
-export default nextConfig;
+export default withSerwist(nextConfig);
