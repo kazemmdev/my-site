@@ -1,7 +1,7 @@
 const Footer = () => (
     <footer className="absolute bottom-0 w-full">
-        <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-8 py-4">
-            footer
+        <div className="text-gray-500 text-center mx-auto flex w-full max-w-4xl items-center justify-center px-8 py-4">
+            © {new Date().getFullYear()} Kazem Mirzaei
         </div>
     </footer>
 );

@@ -1,11 +1,17 @@
 import NavBar from "@/components/navigations/nav-bar";
 import Footer from "@/components/navigations/footer";
 import { Boxes, Box, BoxTitle, BoxContent } from "@/components/ui/boxes";
-import Image from "next/image"
+
+import BlogIcon from "@/assets/blog.svg"
+import PackageIcon from "@/assets/packages.svg"
+import ProjectIcon from "@/assets/projects.svg"
+import ResumeIcon from "@/assets/resume.svg"
+import Socials from "@/components/navigations/socials";
+
 export default function Home() {
   const years = new Date().getFullYear() - 2016
   return (
-    <div className="h-full min-h-screen w-full">
+    <div className="relative h-full min-h-screen w-full">
       <NavBar />
       <main className="px-4 pb-10 w-full max-w-4xl pt-[40px] mx-auto">
           <Boxes>
@@ -28,26 +34,36 @@ export default function Home() {
             </Box>
             <Box isGlowing>
               <BoxTitle>
-                <Image width={24} height={24} src={"/icons/resume.svg"} className="dark:fill-white fill-black" alt={'icon'}/>
+                <ResumeIcon className="dark:fill-white fill-black"/>
                 Resume
               </BoxTitle>
               <BoxContent>Do you want to know more about me?</BoxContent>
             </Box>
             <Box isGlowing>
-              <BoxTitle>Hi</BoxTitle>
-              <BoxContent>Bye</BoxContent>
+              <BoxTitle>
+                <BlogIcon className="dark:fill-white fill-black" />
+                Blogs
+              </BoxTitle>
+              <BoxContent>My ideas and tutorials</BoxContent>
             </Box>
             <Box isGlowing>
-              <BoxTitle>Hi</BoxTitle>
-              <BoxContent>Bye</BoxContent>
+              <BoxTitle>
+                <PackageIcon className="dark:fill-white fill-black" />
+                Packages
+              </BoxTitle>
+              <BoxContent>My creatures!</BoxContent>
             </Box>
             <Box isGlowing>
-              <BoxTitle>Hi</BoxTitle>
-              <BoxContent>Bye</BoxContent>
+              <BoxTitle>
+                <ProjectIcon className="dark:fill-white fill-black" />
+                Projects
+              </BoxTitle>
+              <BoxContent>Some handy works</BoxContent>
             </Box>
             <Box>
-              <BoxTitle>Hi</BoxTitle>
-              <BoxContent>Bye</BoxContent>
+              <Socials />
+              <BoxTitle>Contact Me</BoxTitle>
+              <BoxContent>Let me know if you are interested in my services and collaboration!</BoxContent>
             </Box>
           </Boxes>
       </main>
