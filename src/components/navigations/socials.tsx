@@ -11,8 +11,8 @@ const socials = [
   {
     id: 1,
     type: "email",
-    url: "kazemmdev@gmail.com?subject=Contacting you from your website&amp;body=Ask me a question, get help with one of my projects, or hire me for freelance and contract work!",
-  },
+    url: "kazemmdev@gmail.com?subject=Contacting you from your website&amp;body=Ask me a question, get help with one of my projects, or hire me for freelance and contract work!"
+  }
 ]
 
 const Socials = () => (
