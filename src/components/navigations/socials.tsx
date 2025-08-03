@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ReactSVG } from "react-svg"
 
 const socials = [
-  { id: 3, type: "linkedIn", url: "https://www.linkedin.com/in/kazemmdev" },
+  { id: 3, type: "linkedIn", url: "https://www.linkedin.com/in/kazem-mirzaei" },
   { id: 2, type: "github", url: "https://github.com/kazemmdev" },
   { id: 4, type: "twitter", url: "https://twitter.com/kazemmdev" },
   {

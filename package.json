@@ -12,7 +12,10 @@
     "lint:fix": "next lint --fix --ignore-path .gitignore . >/dev/null 2>&1"
   },
   "dependencies": {
+    "@google/genai": "^1.12.0",
+    "@google/generative-ai": "^0.24.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.5.1",
+    "@radix-ui/react-slot": "^1.2.3",
     "@serwist/next": "^9.1.1",
     "@svgr/webpack": "^8.1.0",
     "class-variance-authority": "^0.7.1",

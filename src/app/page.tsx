@@ -5,6 +5,7 @@ import ProjectIcon from "@/assets/projects.svg"
 import ResumeIcon from "@/assets/resume.svg"
 
 import { Box, BoxContent, Boxes, BoxTitle } from "@/components/ui/boxes"
+import FAQChat from "@/components/faq-chat"
 import Footer from "@/components/navigations/footer"
 import NavBar from "@/components/navigations/nav-bar"
 import Socials from "@/components/navigations/socials"
@@ -13,9 +14,15 @@ export default function Home() {
   const years = new Date().getFullYear() - 2016
   return (
     <div className="relative h-full min-h-screen w-full">
-      <Image src="/bg.jpg" alt="bg" quality={100} fill className="bg-contain object-cover dark:invert" />
+      <Image
+        src="/bg.jpg"
+        alt="bg"
+        quality={100}
+        fill
+        className="bg-contain object-cover dark:invert"
+      />
       <main className="px-4 pb-10 w-full max-w-4xl pt-[40px] mx-auto">
-          <NavBar />
+        <NavBar />
         <Boxes>
           <Box>
             <div className="flex flex-col gap-2 py-4">
