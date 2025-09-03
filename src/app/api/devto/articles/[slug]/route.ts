@@ -2,8 +2,8 @@ import { NextResponse } from "next/server"
 
 const DEV_TO = "https://dev.to/api/articles"
 
-export async function GET(req: Request, { params }: { params: { slug: string } }) {
-  const { slug } = params
+export async function GET(_req: Request, { params }: { params: Promise<Record<string, string>> }) {
+  const { slug } = await params
 
   if (!slug) {
     return NextResponse.json({ error: "Missing article slug" }, { status: 400 })
@@ -27,5 +27,8 @@ export async function GET(req: Request, { params }: { params: { slug: string } }
   }
 
   const data = await res.json()
-  return NextResponse.json(data, { status: 200 })
+  return new NextResponse(data, {
+    status: 200,
+    headers: { "content-type": "application/json" }
+  })
 }

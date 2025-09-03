@@ -6,7 +6,6 @@ import Image from "next/image"
 import { Box, Boxes } from "@/components/ui/boxes"
 import ListInfinite from "@/components/list-infinite"
 import { DevToArticle, useGetBlogArticlesQuery } from "@/app/(landing)/(blog)/_api"
-import hljs from 'highlight.js';
 
 const ArticlesList = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } =

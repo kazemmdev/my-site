@@ -14,11 +14,9 @@ export async function GET(req: Request) {
       "user-agent": "kazem.dev/portfolio",
       accept: "application/json"
     },
-    // Server-to-server: no CORS; opt out of caching if you want fresh data
     cache: "no-store"
   })
 
-  // Pass through status & body
   const body = await res.text()
   return new NextResponse(body, {
     status: res.status,
