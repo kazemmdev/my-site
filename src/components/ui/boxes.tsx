@@ -1,172 +1,121 @@
 "use client"
 
 import React from "react"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
+import { AnimatedGroup } from "@/components/ui/animated-group"
+import { BorderTrail } from "@/components/ui/border-trail"
+import {
+  MorphingDialog,
+  MorphingDialogContainer,
+  MorphingDialogContent,
+  MorphingDialogTitle,
+  MorphingDialogTrigger
+} from "@/components/ui/morphing-dialog"
 
-interface IBox extends React.PropsWithChildren {
-  url?: string
-  height?: number
-  isGlowing?: boolean
+interface IBoxProps extends React.PropsWithChildren {
+  className?: string
 }
 
-const Boxes = ({ children }: React.PropsWithChildren) => {
-  const cardsRef = React.useRef<HTMLDivElement>(null)
-  const handleMouseEnter = () => {
-    cardsRef.current?.childNodes?.forEach(el => {
-      const child = el as HTMLDivElement
-      child.style.setProperty("--border-opacity", "1")
-    })
-  }
-  const handleMouseLeave = () => {
-    cardsRef.current?.childNodes?.forEach(el => {
-      const child = el as HTMLDivElement
-      child.style.setProperty("--border-opacity", "0")
-    })
-  }
-  const handleMouseOver = (e: any) => {
-    cardsRef.current?.childNodes?.forEach(el => {
-      const child = el as HTMLDivElement
-      const x = child?.getBoundingClientRect().left
-      child!.style.setProperty("--cursor-x", `${e.clientX - x}`)
-    })
-    cardsRef.current?.childNodes?.forEach(el => {
-      const child = el as HTMLDivElement
-      const y = child?.getBoundingClientRect().top!
-      child!.style.setProperty("--cursor-y", `${e.clientY - y}`)
-    })
-  }
+const Boxes = ({ className, children }: IBoxProps) => {
   return (
-    <>
-      <div className="cards-highlight absolute inset-0 z-50 overflow-visible pointer-events-none select-none" />
+    <AnimatedGroup
+      className={cn("relative grid grid-cols-2 gap-4 py-10 text-white", className)}
+      variants={{
+        container: {
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.05
+            }
+          }
+        },
+        item: {
+          hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+          visible: {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: {
+              duration: 1.1,
+              type: "spring",
+              bounce: 0.4
+            }
+          }
+        }
+      }}
+    >
+      {children}
+    </AnimatedGroup>
+  )
+}
+
+const Box = ({ url, className, children }: IBoxProps & { url?: string }) => {
+  return url ? (
+    <Link href={url}>
       <div
-        ref={cardsRef}
-        onMouseMove={handleMouseOver}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="relative grid grid-cols-1 gap-4 py-10 text-white md:grid-cols-3 sm:grid-cols-2"
+        className={cn(
+          "group peer overflow-hidden bg-stone-400 dark:bg-stone-700/20 backdrop-blur-3xl",
+          "h-full flex flex-col justify-start rounded-xl relative flex-1 cursor-pointer",
+          "hover:dark:bg-stone-800/80 peer-hover:dark:bg-stone-800/100",
+          "transition-all duration-300 ease-in-out",
+          className
+        )}
       >
+        <BorderTrail
+          className="group-hover:opacity-100 opacity-0"
+          style={{
+            boxShadow:
+              "0px 0px 60px 30px rgb(255 255 255 / 50%), 0 0 100px 60px rgb(0 0 0 / 50%), 0 0 140px 90px rgb(0 0 0 / 50%)"
+          }}
+          size={100}
+        />
         {children}
       </div>
-    </>
-  )
-}
-
-const Box = ({ url, isGlowing = false, height = 270, children }: IBox) => {
-  const router = useRouter()
-  const cardRef = React.useRef<HTMLDivElement>(null)
-  const [tilt, setTilt] = React.useState({ rotateX: 0, rotateY: 0, glareOpacity: 0 })
-
-  React.useEffect(() => {
-    const element = cardRef.current
-    if (!element) return
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isGlowing) return // Only apply tilt if glowing is enabled
-      const rect = element.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-
-      const centerX = rect.width / 2
-      const centerY = rect.height / 2
-
-      const rotateY = ((x - centerX) / centerX) * 15
-      const rotateX = ((y - centerY) / centerY) * -15
-
-      const glareOpacity = 0.5 * (1 - Math.abs((x - centerX) / centerX)) + 0.1
-
-      setTilt({ rotateX, rotateY, glareOpacity })
-    }
-
-    const handleMouseLeave = () => {
-      // Reset tilt and glow opacity
-      setTilt({ rotateX: 0, rotateY: 0, glareOpacity: 0 })
-      cardRef.current?.style.setProperty("--opacity", "0")
-      element.style.transition = "transform 0.3s ease-out"
-    }
-
-    const handleMouseEnter = () => {
-      // Set glow opacity and a transition for the initial tilt
-      cardRef.current?.style.setProperty("--opacity", "0.1")
-      element.style.transition = "transform 0.1s ease-out"
-    }
-
-    // The event listeners are added here
-    element.addEventListener("mousemove", handleMouseMove)
-    element.addEventListener("mouseleave", handleMouseLeave)
-    element.addEventListener("mouseenter", handleMouseEnter)
-
-    // Clean up function to remove event listeners on component unmount
-    return () => {
-      element.removeEventListener("mousemove", handleMouseMove)
-      element.removeEventListener("mouseleave", handleMouseLeave)
-      element.removeEventListener("mouseenter", handleMouseEnter)
-    }
-  }, [isGlowing])
-
-  return (
-    <div
-      className={cn(url && "cursor-pointer", `min-h-[${height}px]`)}
-      onClick={() => url && router.push(url)}
+    </Link>
+  ) : (
+    <MorphingDialog
+      transition={{
+        type: "spring",
+        bounce: 0.05,
+        duration: 0.25
+      }}
     >
       <div
-        ref={cardRef}
         className={cn(
-          `min-h-[${height}px] h-full`,
-          "flex flex-col justify-start rounded-2xl relative flex-1 p-4 overflow-hidden",
-          isGlowing && "card-glow card-glass"
+          "group peer overflow-hidden bg-stone-600 dark:bg-stone-800/20 backdrop-blur-3xl",
+          "h-full flex flex-col justify-start rounded-xl relative flex-1 cursor-pointer",
+          "hover:dark:bg-stone-800/80 peer-hover:dark:bg-stone-800/100",
+          "transition-all duration-300 ease-in-out",
+          className
         )}
-        style={{
-          transform: `perspective(1000px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-          transition: "transform 0.3s ease-out"
-        }}
       >
-        {isGlowing && <div className="card-glow-highlight" />}
-        {isGlowing ? (
-          <div
-            className={cn(
-              "absolute top-[1px] bottom-[1px] left-[1px] right-[1px] rounded-[inherit] flex flex-col items-start justify-end"
-            )}
-          >
-            {children}
-          </div>
-        ) : (
-          children
-        )}
+        <BorderTrail
+          className="group-hover:opacity-100 opacity-0"
+          style={{
+            boxShadow:
+              "0px 0px 60px 30px rgb(255 255 255 / 50%), 0 0 100px 60px rgb(0 0 0 / 50%), 0 0 140px 90px rgb(0 0 0 / 50%)"
+          }}
+          size={100}
+        />
+        {children}
       </div>
-      <svg className="hidden">
-        <filter id="displacementFilter">
-          <feTurbulence
-            type="turbulence"
-            baseFrequency="0.00009"
-            numOctaves="20"
-            result="turbulence"
-          />
-
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="turbulence"
-            scale="15"
-            xChannelSelector="R"
-            yChannelSelector="G"
-          />
-        </filter>
-      </svg>
-    </div>
+    </MorphingDialog>
   )
 }
 
-const BoxTitle = ({ children }: React.PropsWithChildren) => (
-  <h3 className="text-xl relative flex items-center gap-2 justify-start px-4 pb-2 overflow-hidden text-primary-foreground">
-    {children}
-  </h3>
+const BoxTitle = ({ className, children }: IBoxProps) => (
+  <MorphingDialogTrigger>
+    <MorphingDialogTitle className={cn("", className)}>{children}</MorphingDialogTitle>
+  </MorphingDialogTrigger>
 )
 
-const BoxContent = ({ children }: React.PropsWithChildren) => (
-  <div className="relative flex flex-col justify-start px-4 h-[85px] overflow-hidden text-gray-700 dark:text-gray-300">
-    {children}
-  </div>
+const BoxContent = ({ className, children }: IBoxProps) => (
+  <MorphingDialogContainer>
+    <MorphingDialogContent className={cn(className)}>{children}</MorphingDialogContent>
+  </MorphingDialogContainer>
 )
 
 export { Boxes, Box, BoxTitle, BoxContent }

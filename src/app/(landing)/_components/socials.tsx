@@ -17,7 +17,7 @@ const socials = [
 
 const Socials = () => (
   <div className="z-20 py-14">
-    <div className="h-full w-full flex items-center justify-center gap-5">
+    <div className="h-full w-full flex gap-5">
       {socials.map(({ type, url }, index) => (
         <Social key={index} type={type} url={url} />
       ))}

@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useRef, useState } from "react"
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 type Message = {
   text: string
@@ -35,14 +36,14 @@ export default function FAQChat() {
       const data = await response.json()
 
       if (response.ok) {
-          if (data.audio) {
-              const audioBlob = b64toBlob(data.audio, "audio/wav")
-              const audioUrl = URL.createObjectURL(audioBlob)
-              if (audioRef.current) {
-                  audioRef.current.src = audioUrl
-                  audioRef.current.play()
-              }
+        if (data.audio) {
+          const audioBlob = b64toBlob(data.audio, "audio/wav")
+          const audioUrl = URL.createObjectURL(audioBlob)
+          if (audioRef.current) {
+            audioRef.current.src = audioUrl
+            audioRef.current.play()
           }
+        }
 
         if (data.text) {
           setMessages(prevMessages => [...prevMessages, { text: data.text, sender: "bot" }])

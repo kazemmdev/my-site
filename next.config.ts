@@ -12,11 +12,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "kazemm.dev"
-      },
-      {
-        protocol: "https",
-        hostname: "*.kazemm.dev"
+        hostname: "*"
       },
       {
         protocol: "http",

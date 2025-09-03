@@ -1,0 +1,172 @@
+.content h1,
+.content h1 strong {
+    font-size: 1.4em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 1.6em;
+    font-weight: 600;
+}
+
+.content h2,
+.content h2 strong {
+    font-size: 1.3em;
+    line-height: 2em;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.content h3 {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.content h4 {
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin-top: 15px;
+}
+
+.content ul {
+    list-style-type: disc;
+    margin-right: 20px;
+}
+
+.content ol {
+    list-style-type: decimal;
+    margin-right: 20px;
+}
+
+.content strong {
+    font-weight: 600;
+}
+
+.content blockquote {
+    border: 0;
+    background-color: #c7c7c73d;
+    border-left: 5px solid #ccc;
+    margin: 15px 0;
+    padding: 15px;
+}
+
+.content blockquote .image > figcaption {
+    background-color: unset !important;
+    color: rgb(33, 43, 54) !important;
+}
+
+.content p {
+    line-height: 2em;
+    font-size: 1.1em;
+}
+
+.content p i {
+    font-style: italic;
+    line-height: 2.5em;
+}
+
+.content figure img {
+    height: 100%;
+    width: 100%;
+}
+
+.content figure figcaption {
+    font-size: 12px;
+    line-height: 1.5rem;
+    display: block !important;
+    text-align: center !important;
+    color: rgb(33, 43, 54) !important;
+}
+
+.content figure a {
+    min-width: 120px;
+}
+
+.content figure strong,
+.content figure em {
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical;
+    font-style: inherit;
+}
+
+.content figure strong {
+    max-height: 48px;
+    min-height: 24px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.content figure em {
+    max-height: 40px;
+    min-height: 20px;
+}
+
+.content pre {
+    margin: 15px 0;
+    white-space: pre;
+    background-color: #1a1a1a;
+    padding: 1em;
+    color: #f4f4f4;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    text-align: left;
+    direction: ltr;
+    tab-size: 4;
+    overflow: auto;
+    width: 100%;
+}
+
+.content pre:after {
+    display: none !important;
+}
+
+.content p > code {
+    background-color: #494d50;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #f4f4f4;
+}
+
+.content pre.js-fullscreen-code-action {
+    display: none !important;
+}
+
+.content p a,
+.content li a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.content p a:hover,
+.content li a:hover {
+    color: rgb(33, 43, 54);
+}
+
+.content hr {
+    display: block;
+    border: 0 !important;
+    text-align: center;
+    overflow: visible;
+    margin: 36px 0 20px !important;
+    background: none !important;
+    height: 36px !important;
+}
+
+.content hr:before {
+    content: "...";
+    display: inline-block;
+    margin-left: 0.6em;
+    color: var(--foreground);
+    position: relative;
+    top: -20px;
+    font-size: 2.5em;
+}
+
+
+.highlight__panel-action{
+    display: none !important;
+}

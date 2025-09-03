@@ -8,9 +8,11 @@ import "./globals.css"
 
 import React from "react"
 
+import QueryProvider from "@/components/providers/query-provider"
+
 const APP_NAME = "kazemmdev"
-const APP_DEFAULT_TITLE = "Kazem Mirzaei"
-const APP_TITLE_TEMPLATE = "%s - Kazem Mirzaei"
+const APP_DEFAULT_TITLE = "Kazem | Portfolio"
+const APP_TITLE_TEMPLATE = "%s - Kazem"
 const APP_DESCRIPTION = "Full-Stack Web Developer | PHP, Node, Go, React, Docker"
 
 export const metadata: Metadata = {
@@ -24,7 +26,6 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
     title: APP_DEFAULT_TITLE
-    // startUpImage: [],
   },
   formatDetection: {
     telephone: false
@@ -59,8 +60,8 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en">
       <body className={cn("min-h-screen antialiased", poppins.variable)} suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <QueryProvider>{children}</QueryProvider>
         </ThemeProvider>
       </body>
     </html>
