@@ -9,7 +9,7 @@ import ArticleContent from "@/app/(blug)/blog/[slug]/_components/ArticleContent"
 const Page = () => {
   const { data, isLoading } = useGetArticleQuery()
   if (isLoading) return <div>Loading...</div>
-    console.log(data)
+  console.log(data)
   return (
     <article className="w-full max-w-3xl mx-auto pt-10 pb-32 px-4">
       <div className="w-full h-[300px] relative overflow-hidden rounded-md">
