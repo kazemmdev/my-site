@@ -114,7 +114,7 @@ const BoxTitle = ({ className, children }: IBoxProps) => (
 
 const BoxContent = ({ className, children }: IBoxProps) => (
   <MorphingDialogContainer>
-    <MorphingDialogContent className={cn(className)}>{children}</MorphingDialogContent>
+    <MorphingDialogContent className={cn("mx-4",className)}>{children}</MorphingDialogContent>
   </MorphingDialogContainer>
 )
 
