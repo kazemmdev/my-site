@@ -18,5 +18,5 @@ export async function GET(req: Request) {
     })
 
     const body = await res.text()
-    return NextResponse.json(body, {status: res.status})
+    return new NextResponse(body, {status: res.status})
 }
