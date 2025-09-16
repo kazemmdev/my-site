@@ -4,6 +4,8 @@ import React from "react"
 import Link from "next/link"
 import { ReactSVG } from "react-svg"
 
+import { cn } from "@/lib/utils"
+
 const socials = [
   { id: 3, type: "linkedIn", url: "https://www.linkedin.com/in/kazem-mirzaei" },
   { id: 2, type: "github", url: "https://github.com/kazemmdev" },
@@ -15,9 +17,9 @@ const socials = [
   }
 ]
 
-const Socials = () => (
-  <div className="z-20 py-14">
-    <div className="h-full w-full flex gap-5">
+const Socials = ({ className }: { className?: string }) => (
+  <div className={cn("z-20 py-14 hidden md:block", className)}>
+    <div className="h-full w-full flex items-center justify-center md:justify-start gap-5">
       {socials.map(({ type, url }, index) => (
         <Social key={index} type={type} url={url} />
       ))}

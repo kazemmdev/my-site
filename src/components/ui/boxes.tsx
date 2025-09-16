@@ -21,7 +21,7 @@ interface IBoxProps extends React.PropsWithChildren {
 const Boxes = ({ className, children }: IBoxProps) => {
   return (
     <AnimatedGroup
-      className={cn("relative grid grid-cols-2 gap-4 py-10 text-white", className)}
+      className={cn("relative grid md:grid-cols-2 gap-4 md:py-32 text-white", className)}
       variants={{
         container: {
           hidden: { opacity: 0 },
