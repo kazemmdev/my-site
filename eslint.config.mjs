@@ -10,8 +10,8 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  ...compat.plugins("tailwindcss")
+  { ignores: [".next/**", "node_modules/**", "public/sw.js"] },
+  ...compat.extends("next/core-web-vitals", "next/typescript")
 ]
 
 export default eslintConfig

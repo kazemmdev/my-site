@@ -5,7 +5,6 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { AnimatedGroup } from "@/components/ui/animated-group"
-import { BorderTrail } from "@/components/ui/border-trail"
 import {
   MorphingDialog,
   MorphingDialogContainer,
@@ -21,27 +20,25 @@ interface IBoxProps extends React.PropsWithChildren {
 const Boxes = ({ className, children }: IBoxProps) => {
   return (
     <AnimatedGroup
-      className={cn("relative grid md:grid-cols-2 gap-4 md:py-32 text-white", className)}
+      className={cn("relative grid gap-4 md:grid-cols-2 md:py-32", className)}
       variants={{
         container: {
           hidden: { opacity: 0 },
           visible: {
             opacity: 1,
             transition: {
-              staggerChildren: 0.05
+              staggerChildren: 0.06
             }
           }
         },
         item: {
-          hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+          hidden: { opacity: 0, y: 16 },
           visible: {
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
             transition: {
-              duration: 1.1,
-              type: "spring",
-              bounce: 0.4
+              duration: 0.4,
+              ease: "easeOut"
             }
           }
         }
@@ -52,28 +49,18 @@ const Boxes = ({ className, children }: IBoxProps) => {
   )
 }
 
+const boxClasses = (className?: string) =>
+  cn(
+    "group relative flex h-full flex-1 cursor-pointer flex-col justify-start overflow-hidden",
+    "rounded-lg border border-border bg-card text-card-foreground shadow-xs",
+    "transition-all duration-200 hover:border-primary/40 hover:shadow-md",
+    className
+  )
+
 const Box = ({ url, className, children }: IBoxProps & { url?: string }) => {
   return url ? (
     <Link href={url}>
-      <div
-        className={cn(
-          "group peer overflow-hidden bg-stone-400 dark:bg-stone-700/20 backdrop-blur-3xl",
-          "h-full flex flex-col justify-start rounded-xl relative flex-1 cursor-pointer",
-          "hover:dark:bg-stone-800/80 peer-hover:dark:bg-stone-800/100",
-          "transition-all duration-300 ease-in-out",
-          className
-        )}
-      >
-        <BorderTrail
-          className="group-hover:opacity-100 opacity-0"
-          style={{
-            boxShadow:
-              "0px 0px 60px 30px rgb(255 255 255 / 50%), 0 0 100px 60px rgb(0 0 0 / 50%), 0 0 140px 90px rgb(0 0 0 / 50%)"
-          }}
-          size={100}
-        />
-        {children}
-      </div>
+      <div className={boxClasses(className)}>{children}</div>
     </Link>
   ) : (
     <MorphingDialog
@@ -83,25 +70,7 @@ const Box = ({ url, className, children }: IBoxProps & { url?: string }) => {
         duration: 0.25
       }}
     >
-      <div
-        className={cn(
-          "group peer overflow-hidden bg-stone-600 dark:bg-stone-800/20 backdrop-blur-3xl",
-          "h-full flex flex-col justify-start rounded-xl relative flex-1 cursor-pointer",
-          "hover:dark:bg-stone-800/80 peer-hover:dark:bg-stone-800/100",
-          "transition-all duration-300 ease-in-out",
-          className
-        )}
-      >
-        <BorderTrail
-          className="group-hover:opacity-100 opacity-0"
-          style={{
-            boxShadow:
-              "0px 0px 60px 30px rgb(255 255 255 / 50%), 0 0 100px 60px rgb(0 0 0 / 50%), 0 0 140px 90px rgb(0 0 0 / 50%)"
-          }}
-          size={100}
-        />
-        {children}
-      </div>
+      <div className={boxClasses(className)}>{children}</div>
     </MorphingDialog>
   )
 }

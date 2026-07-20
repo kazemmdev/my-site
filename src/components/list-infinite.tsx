@@ -10,6 +10,7 @@ interface ListInfiniteProps {
   data: InfiniteData<any, unknown> | undefined
   renderItem: (item: any) => React.ReactNode
   renderLoader?: () => React.ReactNode
+  renderEmpty?: () => React.ReactNode
   nextPage: () => void
   hasMore: boolean
   loading: boolean
@@ -23,26 +24,25 @@ const ListInfinite = ({
   nextPage,
   renderItem,
   renderLoader,
+  renderEmpty,
   className
 }: ListInfiniteProps) => {
-  console.log(data)
   const { ref, inView } = useInView()
 
   React.useEffect(() => {
     if (inView && hasMore && !loading) nextPage()
-  }, [nextPage, inView])
+  }, [nextPage, inView, hasMore, loading])
+
+  const isEmpty = !loading && (!data || data.pages.every(page => !page?.items?.length))
 
   return (
     <div className={cn("relative w-full", className)}>
       {data?.pages?.map((page, index) => (
-        // @ts-ignore
         <React.Fragment key={index}>
           {page?.items?.map((item: any) => renderItem(item))}
         </React.Fragment>
       ))}
-      {!loading && data && data?.pages?.at(0)?.data?.length == 0 && (
-        <p className="my-10 w-full text-center opacity-50">موردی یافت نشد..</p>
-      )}
+      {isEmpty && renderEmpty ? renderEmpty() : null}
       {loading && renderLoader ? renderLoader() : null}
       <div ref={ref}></div>
     </div>

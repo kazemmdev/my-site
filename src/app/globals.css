@@ -4,12 +4,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans:
+    var(--font-poppins), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -28,66 +32,71 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/*
+ * Design system — anchored on the brand blue #1868db
+ * (oklch(0.5405 0.1913 258.97)). Neutrals carry a barely-there blue
+ * undertone (hue ~259) so surfaces and the accent read as one family.
+ */
 :root {
-  --background: #fafbfc;
-  --foreground: rgb(17, 24, 39);
+  --radius: 0.625rem;
 
-  --card: rgba(82, 106, 168, 0.42);
-  --card-foreground: rgba(5, 73, 176, 0.1);
+  --background: oklch(0.985 0.003 259);
+  --foreground: oklch(0.22 0.012 259);
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.012 259);
 
-  --primary: #ffff;
-  --primary-foreground: rgb(27, 37, 59);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.012 259);
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --primary: oklch(0.5405 0.1913 258.97);
+  --primary-foreground: oklch(1 0 0);
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --secondary: oklch(0.955 0.005 259);
+  --secondary-foreground: oklch(0.3 0.02 259);
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  --muted: oklch(0.955 0.005 259);
+  --muted-foreground: oklch(0.5 0.015 259);
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --accent: oklch(0.94 0.025 259);
+  --accent-foreground: oklch(0.42 0.13 259);
 
-  --border: rgb(220, 224, 236);
-  --input: rgb(27, 37, 59);
-  --ring: rgb(27, 37, 59);
-  --radius: 1rem;
+  --destructive: oklch(0.577 0.245 27.3);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.915 0.006 259);
+  --input: oklch(0.915 0.006 259);
+  --ring: oklch(0.5405 0.1913 258.97);
 }
 
 .dark {
-  --background: rgb(17, 24, 39);
-  --foreground: #fafbfc;
+  --background: oklch(0.165 0.012 259);
+  --foreground: oklch(0.95 0.006 259);
 
-  --card: rgba(193, 193, 213, 0.2);
-  --card-foreground: rgba(163, 183, 201, 0.35);
+  --card: oklch(0.205 0.014 259);
+  --card-foreground: oklch(0.95 0.006 259);
 
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
+  --popover: oklch(0.205 0.014 259);
+  --popover-foreground: oklch(0.95 0.006 259);
 
-  --primary: rgb(27, 37, 59);
-  --primary-foreground: #f4f4f4;
+  --primary: oklch(0.7 0.15 258.97);
+  --primary-foreground: oklch(0.2 0.06 259);
 
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: oklch(0.245 0.014 259);
+  --secondary-foreground: oklch(0.95 0.006 259);
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: oklch(0.245 0.014 259);
+  --muted-foreground: oklch(0.66 0.012 259);
 
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
+  --accent: oklch(0.28 0.035 259);
+  --accent-foreground: oklch(0.87 0.06 259);
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: oklch(0.704 0.191 22.2);
+  --destructive-foreground: oklch(0.97 0.01 20);
 
-  --border: rgb(65, 69, 93);
-  --input: rgb(65, 69, 93);
-  --ring: rgb(65, 69, 93);
-  --radius: 1rem;
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.7 0.15 258.97);
 }
 
 @layer base {
@@ -96,106 +105,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground antialiased;
   }
-}
 
-.card-mask:before {
-  content: "";
-  border-radius: inherit;
-  -webkit-mask:
-    linear-gradient(black, black) content-box content-box,
-    linear-gradient(black, black);
-  -webkit-mask:
-    linear-gradient(black, black) content-box content-box,
-    linear-gradient(black, black);
-  -webkit-mask-composite: xor;
-}
-
-.card-glow-highlight {
-  contain: strict;
-  opacity: var(--opacity);
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(
-    400px circle at var(--x) var(--y),
-    var(--card-foreground),
-    transparent
-  );
-
-  @apply pointer-events-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px] z-10 select-none;
-  @apply pointer-events-none absolute top-[1px] right-[1px] bottom-[1px] left-[1px] z-10 select-none;
-}
-
-.card-glow {
-  --opacity: 0;
-  --y: calc((var(--cursor-y) * 1px));
-  --x: calc((var(--cursor-x) * 1px));
-  contain: strict;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 12px 12px;
-  background: rgba(255, 255, 255, 0.01);
-  filter: drop-shadow(-8px -10px 46px #0000005f);
-  backdrop-filter: brightness(1.1) blur(2px) url(#displacementFilter);
-
-  @apply relative m-0 h-[280px] overflow-hidden rounded-xl select-none;
-}
-
-.card-glass {
-  box-shadow:
-    inset 4px 4px 0 -8px rgba(255, 255, 255, 0.4),
-    inset 0 0 10px 1px rgba(255, 255, 255, 0.6);
-}
-
-.card-glow:before {
-  content: "";
-  border-radius: inherit;
-  opacity: var(--border-opacity);
-  transition: opacity 400ms ease 0s;
-  will-change: background, opacity;
-  background: radial-gradient(800px circle at var(--x) var(--y), var(--card), transparent 60%);
-
-  @apply pointer-events-none absolute inset-0 select-none;
-}
-
-.cards-highlight:before {
-  --color-a: #59e5ae;
-  --color-b: #97ed8d;
-  --color-c: #f2f75d;
-  --page-edge: calc((100vw - 1200px) / 2);
-
-  content: "";
-  transform: translate(-50%, -50%) translateZ(0px);
-  width: calc(100vw - 50px);
-  background:
-    radial-gradient(
-      400px circle at calc(100% - var(--page-edge) - 10%) 45%,
-      var(--color-a),
-      70%,
-      transparent
-    ),
-    radial-gradient(400px circle at 50% 55%, var(--color-b), 60%, transparent),
-    radial-gradient(
-      350px circle at calc(var(--page-edge) + 15%) 40%,
-      var(--color-c),
-      60%,
-      transparent
-    );
-
-  @apply absolute top-1/2 left-1/2 h-screen opacity-5 blur-3xl;
-  @apply absolute top-1/2 left-1/2 h-screen opacity-5 blur-3xl;
-}
-
-.gradiant {
-  -webkit-text-fill-color: transparent;
-  background: linear-gradient(
-    270deg,
-    #ff7356,
-    #ff59e2 25.52%,
-    #52ddf6 50%,
-    #eadf4e 76.04%,
-    #ff7356
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-size: 200% auto;
+  ::selection {
+    @apply bg-primary/25;
+  }
 }

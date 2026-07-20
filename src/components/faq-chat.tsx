@@ -89,7 +89,7 @@ export default function FAQChat() {
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`my-2 p-2 rounded-lg ${msg.sender === "user" ? "bg-blue-100 self-end" : "bg-gray-100 self-start"}`}
+            className={`my-2 p-2 rounded-lg ${msg.sender === "user" ? "bg-accent text-accent-foreground self-end" : "bg-muted text-foreground self-start"}`}
           >
             <p className="text-sm">{msg.text}</p>
           </div>
@@ -111,7 +111,7 @@ export default function FAQChat() {
         />
         <Button
           onClick={handleSendMessage}
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+          className="ml-2 px-4 py-2 rounded-lg"
           disabled={isLoading}
         >
           {isLoading ? "..." : "Send"}
