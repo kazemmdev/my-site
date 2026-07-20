@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-const DEV_TO = "https://dev.to/api/articles/me/published"
+const DEV_TO = "https://dev.to/api/articles/latest?username=kazemmdev"
 const PER_PAGE_DEFAULT = 5
 
 export async function GET(req: Request) {
@@ -8,7 +8,7 @@ export async function GET(req: Request) {
   const page = Number(searchParams.get("page") || "1")
   const perPage = Number(searchParams.get("per_page") || PER_PAGE_DEFAULT)
 
-  const res = await fetch(`${DEV_TO}?per_page=${perPage}&page=${page}`, {
+  const res = await fetch(`${DEV_TO}&per_page=${perPage}&page=${page}`, {
     headers: {
       "api-key": process.env.DEVTO_API_KEY ?? "",
       "user-agent": "kazem.dev/portfolio",
