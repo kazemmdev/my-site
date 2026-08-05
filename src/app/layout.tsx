@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { SerwistProvider } from "@serwist/next/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { poppins } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen antialiased", poppins.variable)}>
+        <SpeedInsights />
         <SerwistProvider swUrl="/sw.js" disable={process.env.NODE_ENV !== "production"}>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <QueryProvider>{children}</QueryProvider>
