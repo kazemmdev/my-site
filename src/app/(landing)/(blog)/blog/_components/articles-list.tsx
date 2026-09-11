@@ -1,12 +1,13 @@
 "use client"
 
 import React from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Rss } from "lucide-react"
 
+import { formatDate } from "@/lib/utils"
 import { Box, Boxes } from "@/components/ui/boxes"
 import { LogoMark } from "@/components/ui/logo-mark"
+import { ArticleCover } from "@/components/article-cover"
 import ListInfinite from "@/components/list-infinite"
 import { DevToArticle, useGetBlogArticlesQuery } from "@/app/(landing)/(blog)/_api"
 
@@ -55,27 +56,35 @@ const ArticlesList = () => {
         nextPage={fetchNextPage}
         loading={isFetchingNextPage || isFetching}
         className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2"
-        renderItem={(article: DevToArticle) => (
-          <Box key={article.id} url={`/blog/${article.slug}`}>
-            <div>
-              <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-muted/60">
-                <LogoMark className="size-12 text-muted-foreground/25" />
-                {(article.social_image ?? article.cover_image) && (
-                  <Image
-                    src={(article.social_image ?? article.cover_image)!}
-                    alt={article.title}
-                    fill
-                    sizes="(min-width: 768px) 320px, 100vw"
-                    className="object-cover"
-                  />
-                )}
+        renderItem={(article: DevToArticle) => {
+          const date = formatDate(article.published_at)
+
+          return (
+            <Box key={article.id} url={`/blog/${article.slug}`}>
+              <div>
+                <ArticleCover
+                  image={article.social_image ?? article.cover_image}
+                  title={article.title}
+                  authorName={article.user?.name}
+                  authorAvatar={article.user?.profile_image_90}
+                  publishedAt={article.published_at}
+                  sizes="(min-width: 768px) 320px, 100vw"
+                  className="h-48"
+                />
+                <div className="px-5 pt-3 pb-4">
+                  <h3 className="text-base font-semibold">{article.title}</h3>
+                  {(date || article.reading_time_minutes) && (
+                    <p className="mt-1.5 text-xs text-muted-foreground">
+                      {date}
+                      {date && article.reading_time_minutes ? " · " : ""}
+                      {article.reading_time_minutes && `${article.reading_time_minutes} min read`}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className="px-5 pt-3 pb-4">
-                <h3 className="text-base font-semibold">{article.title}</h3>
-              </div>
-            </div>
-          </Box>
-        )}
+            </Box>
+          )
+        }}
         renderLoader={() => (
           <>
             {Array.from({ length: 4 }, (_, i) => (
