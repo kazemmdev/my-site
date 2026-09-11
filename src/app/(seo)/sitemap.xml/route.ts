@@ -1,70 +1,43 @@
 import { NextRequest } from "next/server"
 
+import { fetchAllDevToArticles } from "@/lib/devto"
+
 export const runtime = "edge"
 export const dynamic = "force-dynamic"
 
-type Article = { slug: string; updated_at?: string }
-type Course = { uuid: string; updated_at?: string }
-
-async function fetchAll<T>(url: string): Promise<T[]> {
-  const acc: T[] = []
-
-  while (url) {
-    const res = await fetch(url, {
-      headers: { accept: "application/json" },
-      next: { revalidate: 3600 }
-    })
-
-    if (!res.ok) throw new Error(`API ${url} → ${res.status}`)
-
-    const json = await res.json().catch(() => {
-      throw new Error(`Non-JSON at ${url}`)
-    })
-
-    acc.push(...(json.data as T[]))
-    url = json.links?.next ?? null
-  }
-  return acc
+type UrlEntry = {
+  url: string
+  lastModified?: string | null
+  changeFrequency: string
+  priority: number
 }
 
 export async function GET(req: NextRequest) {
-  const host = req.headers.get("host") ?? "gradeup.app"
+  const host = req.headers.get("host") ?? "kazemm.dev"
   const base = `https://${host}`
 
-  const API = (process.env.NEXT_PUBLIC_API_URL ?? "https://gradeup.app/api/v1/").replace(
-    /\/?$/,
-    "/"
-  )
+  const articles = await fetchAllDevToArticles().catch(() => [])
 
-  const [articles, courses] = await Promise.all([
-    fetchAll<Article>(`${API}categories/latest/articles?page=1`),
-    fetchAll<Course>(`${API}courses?page=1`)
-  ])
-
-  const urls: any[] = [
-    { url: `${base}/`, priority: 1.0 },
+  const urls: UrlEntry[] = [
+    { url: `${base}/`, changeFrequency: "monthly", priority: 1.0 },
+    { url: `${base}/skills`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.8 },
     ...articles.map(a => ({
       url: `${base}/blog/${a.slug}`,
-      lastModified: a.updated_at,
+      lastModified: a.edited_at ?? a.published_at,
       changeFrequency: "weekly",
-      priority: 0.8
-    })),
-    ...courses.map(c => ({
-      url: `${base}/courses/${c.uuid}`,
-      lastModified: c.updated_at,
-      changeFrequency: "weekly",
-      priority: 0.8
+      priority: 0.7
     }))
   ]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
   .map(
     u => `<url>
-  <loc>${u.url}</loc>${u.lastModified ? `\n  <lastmod>${u.lastModified}</lastmod>` : ""}
-  <changefreq>${u.changeFrequency ?? "monthly"}</changefreq>
-  <priority>${u.priority ?? 0.5}</priority>
+  <loc>${u.url}</loc>${u.lastModified ? `\n  <lastmod>${new Date(u.lastModified).toISOString()}</lastmod>` : ""}
+  <changefreq>${u.changeFrequency}</changefreq>
+  <priority>${u.priority}</priority>
 </url>`
   )
   .join("\n")}

@@ -3,8 +3,10 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 export type DevToArticle = {
   id: number
   title: string
+  slug: string
   url: string
   cover_image: string | null
+  social_image?: string | null
   description?: string | null
   published_at?: string | null
   tag_list?: string[]

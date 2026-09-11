@@ -1,73 +1,69 @@
-"use client"
-
 import React from "react"
+import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, ArrowUpRight } from "lucide-react"
+import { notFound } from "next/navigation"
 
+import { fetchDevToArticle } from "@/lib/devto"
 import { LogoMark } from "@/components/ui/logo-mark"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useGetArticleQuery } from "@/app/(blug)/blog/[slug]/_api"
 import ArticleContent from "@/app/(blug)/blog/[slug]/_components/ArticleContent"
 
-const Page = () => {
-  const { data, isLoading, isError } = useGetArticleQuery()
+type Props = { params: Promise<{ slug: string }> }
 
-  if (isLoading)
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 pt-10 pb-32">
-        <div className="shimmer relative flex h-[300px] w-full items-center justify-center rounded-lg bg-muted/60">
-          <LogoMark className="size-16 text-muted-foreground/25" />
-        </div>
-        <Skeleton className="mt-6 h-8 w-2/3" />
-        <Skeleton className="mt-4 h-4 w-full" />
-        <Skeleton className="mt-2 h-4 w-5/6" />
-      </div>
-    )
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const article = await fetchDevToArticle(slug)
 
-  if (isError || !data)
-    return (
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-3 px-4 pt-24 pb-32 text-center">
-        <LogoMark className="size-14 text-muted-foreground/40" />
-        <p className="text-lg font-medium">This article can’t be loaded right now</p>
-        <p className="max-w-sm text-sm text-muted-foreground">
-          You can find all of my posts on DEV Community instead.
-        </p>
-        <div className="flex items-center gap-5 pt-2">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="size-4" /> Back to blog
-          </Link>
-          <Link
-            href="https://dev.to/kazemmdev"
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-          >
-            Read on dev.to <ArrowUpRight className="size-4" />
-          </Link>
-        </div>
-      </div>
-    )
+  if (!article) return { title: "Article not found" }
+
+  const description = article.description ?? undefined
+  const coverImage = article.social_image ?? article.cover_image
+  const images = coverImage ? [coverImage] : undefined
+
+  return {
+    title: article.title,
+    description,
+    alternates: { canonical: `/blog/${article.slug}` },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description,
+      url: `/blog/${article.slug}`,
+      publishedTime: article.published_at ?? undefined,
+      modifiedTime: article.edited_at ?? undefined,
+      tags: article.tag_list,
+      images
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title: article.title,
+      description,
+      images
+    }
+  }
+}
+
+const Page = async ({ params }: Props) => {
+  const { slug } = await params
+  const article = await fetchDevToArticle(slug)
+
+  if (!article) notFound()
 
   return (
     <article className="mx-auto w-full max-w-3xl px-4 pt-10 pb-32">
       <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden rounded-lg bg-muted/60">
         <LogoMark className="size-16 text-muted-foreground/25" />
-        {data.cover_image && (
+        {(article.social_image ?? article.cover_image) && (
           <Image
-            src={data.cover_image}
-            alt="post cover"
+            src={(article.social_image ?? article.cover_image)!}
+            alt={article.title}
             fill
             sizes="(min-width: 768px) 768px, 100vw"
             className="object-cover"
           />
         )}
       </div>
-      <h1 className="py-4 text-3xl font-semibold tracking-tight">{data.title}</h1>
-      <ArticleContent html={data.body_html} />
+      <h1 className="py-4 text-3xl font-semibold tracking-tight">{article.title}</h1>
+      <ArticleContent html={article.body_html ?? ""} />
     </article>
   )
 }

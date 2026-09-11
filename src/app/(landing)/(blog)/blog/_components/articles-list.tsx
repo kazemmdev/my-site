@@ -56,14 +56,14 @@ const ArticlesList = () => {
         loading={isFetchingNextPage || isFetching}
         className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2"
         renderItem={(article: DevToArticle) => (
-          <Box key={article.id} url={`/blog/${article.id}`}>
+          <Box key={article.id} url={`/blog/${article.slug}`}>
             <div>
               <div className="relative flex h-48 w-full items-center justify-center overflow-hidden bg-muted/60">
                 <LogoMark className="size-12 text-muted-foreground/25" />
-                {article.cover_image && (
+                {(article.social_image ?? article.cover_image) && (
                   <Image
-                    src={article.cover_image}
-                    alt="post cover"
+                    src={(article.social_image ?? article.cover_image)!}
+                    alt={article.title}
                     fill
                     sizes="(min-width: 768px) 320px, 100vw"
                     className="object-cover"

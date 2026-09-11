@@ -18,7 +18,10 @@ const APP_DEFAULT_TITLE = "Kazem | Portfolio"
 const APP_TITLE_TEMPLATE = "%s - Kazem"
 const APP_DESCRIPTION = "Full-Stack Web Developer | PHP, Node, Go, React, Docker"
 
+const DEFAULT_OG_IMAGE = "/bg-1.jpg"
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kazemm.dev"),
   applicationName: APP_NAME,
   title: {
     default: APP_DEFAULT_TITLE,
@@ -40,15 +43,17 @@ export const metadata: Metadata = {
       default: APP_DEFAULT_TITLE,
       template: APP_TITLE_TEMPLATE
     },
-    description: APP_DESCRIPTION
+    description: APP_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: {
       default: APP_DEFAULT_TITLE,
       template: APP_TITLE_TEMPLATE
     },
-    description: APP_DESCRIPTION
+    description: APP_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE]
   }
 }
 
