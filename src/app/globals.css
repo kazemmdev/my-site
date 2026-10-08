@@ -145,6 +145,14 @@
   }
 }
 
+/* Theme switch: dark-mode.tsx animates the new snapshot as a growing circle,
+   so turn off the default cross-fade while it runs. */
+.theme-transition::view-transition-old(root),
+.theme-transition::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Shimmer sweep for skeletons and media placeholders; foreground-based so it
    reads correctly in both light and dark themes. */
 @keyframes shimmer {
