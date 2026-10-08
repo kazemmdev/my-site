@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 
 import { INTRO } from "@/config/contents"
 import { cn } from "@/lib/utils"
@@ -22,7 +23,17 @@ const Sidebar = ({ className }: { className?: string }) => {
       )}
     >
       <section className="flex flex-col gap-3">
-        <p className="text-product-label font-semibold text-muted-foreground">{INTRO.role}</p>
+        <div className="flex items-center gap-3">
+          <Image
+            src={INTRO.avatar}
+            alt="Kazem Mirzaei"
+            width={48}
+            height={48}
+            priority
+            className="size-12 rounded-full ring-1 ring-border"
+          />
+          <p className="text-product-label font-semibold text-muted-foreground">{INTRO.role}</p>
+        </div>
         <TextEffect
           per="word"
           as="h1"
