@@ -269,7 +269,7 @@ export const CV: ResumeDocument = {
       companyNote: "AI-powered mobile app",
       start: "2025-08",
       end: "2025-12",
-      employment: "Contract · Remote",
+      employment: "Contract · Remote (Amsterdam, Netherlands)",
       bullets: [
         "Shipped a React Native app to the Apple App Store, from feature work through store review and release.",
         "Built the Node.js and Prisma backend behind the app's API.",
@@ -311,7 +311,7 @@ export const CV: ResumeDocument = {
       companyNote: "Health and fasting education platform with courses, blog, and community",
       start: "2022-12",
       end: "2025-04",
-      employment: "Contract · Remote",
+      employment: "Contract · Remote (Iran)",
       bullets: [
         "Led the build of a real-time health platform from scratch with Laravel, Go, and Next.js.",
         "Broke the original Laravel monolith into services, starting with the video transcoder, which was the heaviest workload.",
@@ -363,7 +363,7 @@ export const CV: ResumeDocument = {
       companyNote: "Location-based fresh produce marketplace",
       start: "2022-05",
       end: "2022-10",
-      employment: "Contract · Remote",
+      employment: "Contract · Remote (Iran)",
       bullets: [
         "Built a location-aware marketplace from scratch that connects buyers with nearby producers and books same-day couriers.",
         "Owned the Laravel backend, Nuxt.js frontend, payments, and the separate admin and producer dashboards.",

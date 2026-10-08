@@ -77,7 +77,7 @@ Contract · Remote (Philippines)
 
 Tidalflow · AI-powered mobile app
 
-Contract · Remote
+Contract · Remote (Amsterdam, Netherlands)
 
 - Shipped a React Native app to the Apple App Store, from feature work through store review and release.
 - Built the Node.js and Prisma backend behind the app's API.
@@ -108,7 +108,7 @@ Freelance · Remote
 
 Hunter · Health and fasting education platform with courses, blog, and community
 
-Contract · Remote
+Contract · Remote (Iran)
 
 - Led the build of a real-time health platform from scratch with Laravel, Go, and Next.js.
 - Broke the original Laravel monolith into services, starting with the video transcoder, which was the heaviest workload.
@@ -147,7 +147,7 @@ Contract · Remote (France)
 
 Torotazeh · Location-based fresh produce marketplace
 
-Contract · Remote
+Contract · Remote (Iran)
 
 - Built a location-aware marketplace from scratch that connects buyers with nearby producers and books same-day couriers.
 - Owned the Laravel backend, Nuxt.js frontend, payments, and the separate admin and producer dashboards.
