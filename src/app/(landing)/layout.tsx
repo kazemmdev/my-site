@@ -10,7 +10,7 @@ const Layout = ({ children }: React.PropsWithChildren) => {
     <div className="relative h-screen w-full overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-96 bg-linear-to-b from-primary/10 to-transparent"
+        className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-72 bg-linear-to-b from-card to-transparent"
       />
       <main className="mx-auto grid h-full w-full max-w-7xl grid-cols-1 gap-4 px-4 md:grid-cols-2 md:px-6 xl:px-0">
         <Sidebar />

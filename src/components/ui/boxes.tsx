@@ -52,8 +52,8 @@ const Boxes = ({ className, children }: IBoxProps) => {
 const boxClasses = (className?: string) =>
   cn(
     "group relative flex h-full flex-1 cursor-pointer flex-col justify-start overflow-hidden",
-    "rounded-lg border border-border bg-card text-card-foreground shadow-xs",
-    "transition-all duration-200 hover:border-primary/40 hover:shadow-md",
+    "rounded-card border border-border bg-card text-card-foreground",
+    "transition-colors duration-200 hover:border-input",
     className
   )
 

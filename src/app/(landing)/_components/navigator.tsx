@@ -11,7 +11,7 @@ const Navigator = () => {
 
   return (
     <nav className="pt-3 pb-5">
-      <div className="mx-auto flex w-fit items-center justify-between gap-10 py-4 md:mx-0 md:flex-col md:items-start md:gap-4">
+      <div className="mx-auto flex w-fit items-center justify-between gap-6 py-4 md:mx-0 md:flex-col md:items-start md:gap-4">
         {NAV_ITEMS.map(({ title, href }) => {
           const isActive = pathname === href
 
@@ -21,7 +21,7 @@ const Navigator = () => {
               href={href}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "group flex items-center gap-3 text-sm font-medium tracking-wide transition-colors",
+                "group flex items-center gap-3 text-section-nav font-medium transition-colors",
                 isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
@@ -30,8 +30,8 @@ const Navigator = () => {
                 className={cn(
                   "hidden h-px transition-all duration-300 md:block",
                   isActive
-                    ? "w-10 bg-primary"
-                    : "w-4 bg-border group-hover:w-8 group-hover:bg-primary/60"
+                    ? "w-10 bg-foreground"
+                    : "w-4 bg-border group-hover:w-8 group-hover:bg-muted-foreground"
                 )}
               />
               {title}

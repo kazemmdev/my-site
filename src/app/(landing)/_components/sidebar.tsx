@@ -16,21 +16,19 @@ const Sidebar = ({ className }: { className?: string }) => {
       )}
     >
       <section className="flex flex-col gap-3">
-        <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-          {INTRO.role}
-        </p>
+        <p className="text-product-label font-semibold text-muted-foreground">{INTRO.role}</p>
         <TextEffect
           per="word"
           as="h1"
           preset="slide"
-          className="text-4xl font-semibold tracking-tight text-balance md:text-5xl"
+          className="text-hero-product-name font-semibold text-balance md:text-headline"
         >
           {INTRO.title}
         </TextEffect>
         <TextEffect
           per="word"
           as="p"
-          className="my-2 max-w-md leading-relaxed text-muted-foreground"
+          className="my-2 max-w-md text-section-nav text-muted-foreground"
         >
           {INTRO.body}
         </TextEffect>

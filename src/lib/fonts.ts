@@ -1,6 +1,6 @@
-import localFont from "next/font/local"
+import { Inter } from "next/font/google"
 
-export const poppins = localFont({
-  src: "../assets/fonts/font.woff2",
-  variable: "--font-poppins"
+export const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter"
 })

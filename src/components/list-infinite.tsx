@@ -6,9 +6,9 @@ import { useInView } from "react-intersection-observer"
 
 import { cn } from "@/lib/utils"
 
-interface ListInfiniteProps {
-  data: InfiniteData<any, unknown> | undefined
-  renderItem: (item: any) => React.ReactNode
+interface ListInfiniteProps<T> {
+  data: InfiniteData<{ items: T[] }, unknown> | undefined
+  renderItem: (item: T) => React.ReactNode
   renderLoader?: () => React.ReactNode
   renderEmpty?: () => React.ReactNode
   nextPage: () => void
@@ -17,7 +17,7 @@ interface ListInfiniteProps {
   className?: string
 }
 
-const ListInfinite = ({
+const ListInfinite = <T,>({
   data,
   loading,
   hasMore,
@@ -26,7 +26,7 @@ const ListInfinite = ({
   renderLoader,
   renderEmpty,
   className
-}: ListInfiniteProps) => {
+}: ListInfiniteProps<T>) => {
   const { ref, inView } = useInView()
 
   React.useEffect(() => {
@@ -38,9 +38,7 @@ const ListInfinite = ({
   return (
     <div className={cn("relative w-full", className)}>
       {data?.pages?.map((page, index) => (
-        <React.Fragment key={index}>
-          {page?.items?.map((item: any) => renderItem(item))}
-        </React.Fragment>
+        <React.Fragment key={index}>{page?.items?.map(item => renderItem(item))}</React.Fragment>
       ))}
       {isEmpty && renderEmpty ? renderEmpty() : null}
       {loading && renderLoader ? renderLoader() : null}

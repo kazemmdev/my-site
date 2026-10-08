@@ -58,7 +58,7 @@ const Page = async ({ params }: Props) => {
     <article className="mx-auto w-full max-w-3xl px-4 pt-10 pb-32">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground"
+        className="inline-flex items-center gap-1 text-body font-medium text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="size-4" /> Back to blog
       </Link>
@@ -70,10 +70,10 @@ const Page = async ({ params }: Props) => {
         authorAvatar={article.user?.profile_image_90}
         publishedAt={article.published_at}
         sizes="(min-width: 768px) 768px, 100vw"
-        className="mt-4 h-[300px] rounded-lg"
+        className="mt-4 h-[300px] rounded-card"
       />
 
-      <h1 className="pt-6 text-3xl font-semibold tracking-tight text-balance">{article.title}</h1>
+      <h1 className="pt-6 text-hero-product-name font-semibold text-balance">{article.title}</h1>
 
       <div className="mt-4 flex items-center gap-3">
         {article.user?.profile_image_90 ? (
@@ -87,9 +87,9 @@ const Page = async ({ params }: Props) => {
         ) : (
           <LogoMark className="size-9 text-muted-foreground/40" />
         )}
-        <div className="text-sm leading-tight">
+        <div className="text-body">
           <p className="font-medium text-foreground">{article.user?.name ?? "Kazem"}</p>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-utility-nav text-muted-foreground">
             {date}
             {date && article.reading_time_minutes ? " · " : ""}
             {article.reading_time_minutes && `${article.reading_time_minutes} min read`}
@@ -102,7 +102,7 @@ const Page = async ({ params }: Props) => {
           {article.tag_list.map(tag => (
             <span
               key={tag}
-              className="rounded-md border border-border bg-secondary px-2 py-0.5 text-xs text-secondary-foreground"
+              className="rounded-full border border-input px-2.5 py-0.5 text-utility-nav text-foreground"
             >
               #{tag}
             </span>
@@ -110,7 +110,7 @@ const Page = async ({ params }: Props) => {
         </div>
       )}
 
-      <hr className="pb-4 mt-6 border-border" />
+      <hr className="mt-6 border-border pb-4" />
 
       <ArticleContent html={article.body_html ?? ""} />
     </article>

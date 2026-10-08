@@ -29,7 +29,7 @@ const ArticleCover = ({
     <div
       className={cn(
         "relative flex w-full items-center justify-center overflow-hidden",
-        image && "bg-muted/60",
+        image && "bg-muted/50",
         className
       )}
     >
@@ -39,9 +39,9 @@ const ArticleCover = ({
           <Image src={image} alt={title} fill sizes={sizes} className="object-cover" />
         </>
       ) : (
-        <div className="relative flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/15 via-primary/5 to-transparent">
-          <LogoMark className="absolute size-24 text-primary/10" />
-          <div className="relative flex items-center gap-2.5 rounded-full border border-border/70 bg-card/90 px-4 py-2 shadow-xs backdrop-blur-sm">
+        <div className="relative flex h-full w-full items-center justify-center bg-muted/50">
+          <LogoMark className="absolute size-24 text-muted-foreground/15" />
+          <div className="relative flex items-center gap-2.5 rounded-full border border-border bg-card/80 px-4 py-2 backdrop-blur-md">
             {authorAvatar ? (
               <Image
                 src={authorAvatar}
@@ -55,9 +55,9 @@ const ArticleCover = ({
                 <LogoMark className="size-4 text-muted-foreground/50" />
               </div>
             )}
-            <div className="text-left leading-tight">
-              {authorName && <p className="text-sm font-medium text-foreground">{authorName}</p>}
-              {date && <p className="text-xs text-muted-foreground">{date}</p>}
+            <div className="text-start">
+              {authorName && <p className="text-body font-medium text-foreground">{authorName}</p>}
+              {date && <p className="text-utility-nav text-muted-foreground">{date}</p>}
             </div>
           </div>
         </div>

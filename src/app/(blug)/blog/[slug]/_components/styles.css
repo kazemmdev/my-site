@@ -47,7 +47,7 @@
 
 .content ul,
 .content ol {
-  padding-left: 1.4em;
+  padding-inline-start: 1.4em;
 }
 
 .content ul {
@@ -74,8 +74,9 @@
 .content blockquote {
   border: 0;
   background-color: var(--muted);
-  border-left: 3px solid var(--primary);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border-inline-start: 3px solid var(--input);
+  border-start-end-radius: var(--radius);
+  border-end-end-radius: var(--radius);
   padding: 15px 18px;
 }
 
@@ -92,7 +93,7 @@
 .content figure img {
   height: 100%;
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
 }
 
 .content figure figcaption {
@@ -131,12 +132,12 @@
 
 .content pre {
   white-space: pre;
-  background-color: oklch(0.21 0.014 345);
+  background-color: #1d1d1f; /* Carbon — code stays dark in both themes (github-dark) */
   padding: 1em;
-  color: oklch(0.95 0.006 350);
+  color: #f5f5f7;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  text-align: left;
+  text-align: start;
   direction: ltr;
   tab-size: 4;
   overflow: auto;
@@ -154,7 +155,7 @@
   padding: 0.2em 0.4em;
   border-radius: calc(var(--radius) - 4px);
   font-size: 0.9em;
-  color: var(--accent-foreground);
+  color: var(--foreground);
 }
 
 .content pre.js-fullscreen-code-action {
@@ -163,7 +164,7 @@
 
 .content p a,
 .content li a {
-  color: var(--primary);
+  color: var(--link);
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
@@ -187,7 +188,7 @@
 .content hr:before {
   content: "...";
   display: inline-block;
-  margin-left: 0.6em;
+  margin-inline-start: 0.6em;
   color: var(--foreground);
   position: relative;
   top: -20px;

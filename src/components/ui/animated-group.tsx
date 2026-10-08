@@ -15,6 +15,9 @@ export type PresetType =
   | "rotate"
   | "swing"
 
+// Intrinsic tags only: motion's static components (motion.div…) avoid creating components during render.
+type MotionTag = "div" | "section" | "ul" | "ol" | "li"
+
 export type AnimatedGroupProps = {
   children: ReactNode
   className?: string
@@ -23,8 +26,8 @@ export type AnimatedGroupProps = {
     item?: Variants
   }
   preset?: PresetType
-  as?: React.ElementType
-  asChild?: React.ElementType
+  as?: MotionTag
+  asChild?: MotionTag
 }
 
 const defaultContainerVariants: Variants = {
@@ -122,8 +125,8 @@ function AnimatedGroup({
   const containerVariants = variants?.container || selectedVariants.container
   const itemVariants = variants?.item || selectedVariants.item
 
-  const MotionComponent = React.useMemo(() => motion.create(as as React.ElementType), [as])
-  const MotionChild = React.useMemo(() => motion.create(asChild as React.ElementType), [asChild])
+  const MotionComponent = motion[as]
+  const MotionChild = motion[asChild]
 
   return (
     <MotionComponent

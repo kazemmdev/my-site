@@ -84,7 +84,7 @@ export default function FAQChat() {
   }
 
   return (
-    <div className="fixed bottom-0 right-0 z-20">
+    <div className="fixed end-0 bottom-0 z-20">
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((msg, index) => (
           <div
@@ -98,7 +98,7 @@ export default function FAQChat() {
       <div className="p-4 border-t flex">
         <Input
           type="text"
-          className="flex-1 p-2 border rounded-lg focus:outline-none"
+          className="flex-1 p-2"
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={e => {
@@ -109,11 +109,7 @@ export default function FAQChat() {
           disabled={isLoading}
           placeholder="Ask a question..."
         />
-        <Button
-          onClick={handleSendMessage}
-          className="ml-2 px-4 py-2 rounded-lg"
-          disabled={isLoading}
-        >
+        <Button onClick={handleSendMessage} className="ms-2 px-4 py-2" disabled={isLoading}>
           {isLoading ? "..." : "Send"}
         </Button>
       </div>

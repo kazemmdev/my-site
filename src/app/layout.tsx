@@ -3,7 +3,7 @@ import { SerwistProvider } from "@serwist/next/react"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 
-import { poppins } from "@/lib/fonts"
+import { inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import ThemeProvider from "@/components/providers/theme-provider"
 
@@ -67,7 +67,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen antialiased", poppins.variable)}>
+      <body className={cn("min-h-screen antialiased", inter.variable)}>
         <SpeedInsights />
         <Analytics />
         <SerwistProvider swUrl="/sw.js" disable={process.env.NODE_ENV !== "production"}>

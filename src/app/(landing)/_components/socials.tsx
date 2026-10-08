@@ -59,7 +59,7 @@ const Socials = ({ className }: { className?: string }) => (
           href={url}
           aria-label={label}
           title={label}
-          className="text-muted-foreground transition-colors hover:text-primary"
+          className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <Icon className="size-5" />
         </Link>

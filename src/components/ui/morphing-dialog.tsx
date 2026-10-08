@@ -1,6 +1,15 @@
 "use client"
 
-import React, { useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from "react"
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore
+} from "react"
 import { XIcon } from "lucide-react"
 import { AnimatePresence, motion, MotionConfig, Transition, Variant } from "motion/react"
 import { createPortal } from "react-dom"
@@ -200,12 +209,12 @@ export type MorphingDialogContainerProps = {
 
 function MorphingDialogContainer({ children }: MorphingDialogContainerProps) {
   const { isOpen, uniqueId } = useMorphingDialog()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    return () => setMounted(false)
-  }, [])
+  // false during SSR/hydration, true on the client — the portal needs document.body.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
 
   if (!mounted) return null
 
@@ -215,7 +224,7 @@ function MorphingDialogContainer({ children }: MorphingDialogContainerProps) {
         <>
           <motion.div
             key={`backdrop-${uniqueId}`}
-            className="fixed inset-0 h-full w-full bg-background/60 backdrop-blur-xs"
+            className="fixed inset-0 h-full w-full bg-background/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -348,7 +357,7 @@ function MorphingDialogClose({ children, className, variants }: MorphingDialogCl
       type="button"
       aria-label="Close dialog"
       key={`dialog-close-${uniqueId}`}
-      className={cn("absolute top-6 right-6", className)}
+      className={cn("absolute end-6 top-6", className)}
       initial="initial"
       animate="animate"
       exit="exit"

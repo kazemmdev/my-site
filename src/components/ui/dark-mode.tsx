@@ -6,18 +6,17 @@ import { useTheme } from "next-themes"
 
 const DarkMode = () => {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
 
-  React.useEffect(() => setMounted(true), [])
-
+  // Icons swap via the `.dark` class, so no client-only "mounted" render is needed.
   return (
     <button
       type="button"
       aria-label="Toggle theme"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="inline-flex size-8 cursor-pointer items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+      className="inline-flex size-8 cursor-pointer items-center justify-center rounded-full border border-input text-muted-foreground transition-colors hover:text-foreground"
     >
-      {mounted && (resolvedTheme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />)}
+      <Sun className="hidden size-4 dark:block" />
+      <Moon className="size-4 dark:hidden" />
     </button>
   )
 }
