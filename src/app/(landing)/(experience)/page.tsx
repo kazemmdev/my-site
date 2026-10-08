@@ -1,42 +1,68 @@
 import React from "react"
 
-import { EDUCATION, EXPERIENCES } from "@/config/contents"
+import { CV } from "@/config/resume"
+import { formatDuration, formatPeriod } from "@/lib/resume"
 import { Box, BoxContent, Boxes, BoxTitle } from "@/components/ui/boxes"
+
+// "Present" durations are computed at render; refresh daily.
+export const revalidate = 86400
 
 const Page = () => {
   return (
     <Boxes>
-      {EXPERIENCES.map((expr, index) => (
-        <Box key={index}>
+      {CV.experience.map(role => (
+        <Box key={`${role.company}-${role.start}`}>
           <BoxTitle className="space-y-2 p-6">
-            <h3 className="text-left text-lg font-semibold">{expr.title}</h3>
-            <p className="text-left text-sm text-muted-foreground">{expr.timeframe}</p>
+            <h3 className="text-start text-product-label font-semibold">{role.title}</h3>
+            <p className="text-start text-body text-muted-foreground">
+              <span className="font-medium text-foreground">{role.company}</span> ·{" "}
+              {formatPeriod(role)}
+            </p>
           </BoxTitle>
-          <BoxContent className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden rounded-lg border border-border bg-popover p-6 text-popover-foreground sm:w-[500px]">
+          <BoxContent className="pointer-events-auto relative flex h-auto max-h-[85dvh] w-full flex-col overflow-auto rounded-card border border-border bg-popover p-6 text-popover-foreground sm:w-[560px]">
             <div className="space-y-3 p-2">
-              <h3 className="text-left text-lg font-semibold">{expr.title}</h3>
-              <p className="text-left text-sm text-muted-foreground">{expr.timeframe}</p>
-              <ul className="list-disc space-y-1.5 pl-5 marker:text-primary">
-                {expr.details.map((detail, index) => (
-                  <li key={index} className="text-sm leading-relaxed">
-                    {detail}
+              <h3 className="text-start text-product-label font-semibold">{role.title}</h3>
+              <div className="space-y-1 text-start text-body text-muted-foreground">
+                <p>
+                  <span className="font-medium text-foreground">{role.company}</span>
+                  {role.companyNote && ` · ${role.companyNote}`}
+                </p>
+                <p>
+                  {formatPeriod(role)} · {formatDuration(role)}
+                  {role.employment && ` · ${role.employment}`}
+                </p>
+              </div>
+              <ul className="list-disc space-y-1.5 ps-5 marker:text-muted-foreground">
+                {role.bullets.map(bullet => (
+                  <li key={bullet} className="text-body leading-relaxed">
+                    {bullet}
                   </li>
                 ))}
               </ul>
+              {role.stack && (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {role.stack.map(item => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-input px-2.5 py-0.5 text-utility-nav text-foreground"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </BoxContent>
         </Box>
       ))}
-      {EDUCATION.map((edu, index) => (
+      {CV.education.map(({ degree, detail }) => (
         <div
-          key={`edu-${index}`}
-          className="flex h-full flex-col justify-start rounded-lg border border-border bg-card p-6 text-card-foreground shadow-xs"
+          key={degree}
+          className="flex h-full flex-col justify-start rounded-card border border-border bg-card p-6 text-card-foreground"
         >
-          <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-            Education
-          </p>
-          <h3 className="mt-2 text-left text-lg font-semibold">{edu.title}</h3>
-          <p className="text-left text-sm text-muted-foreground">{edu.timeframe}</p>
+          <p className="text-utility-nav font-semibold text-muted-foreground">Education</p>
+          <h3 className="mt-2 text-start text-product-label font-semibold">{degree}</h3>
+          <p className="text-start text-body text-muted-foreground">{detail}</p>
         </div>
       ))}
     </Boxes>

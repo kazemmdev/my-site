@@ -6,7 +6,7 @@ Turkey · Open to remote (UTC+3)
 
 [kazemm.dev](https://kazemm.dev) · [kazemmdev@gmail.com](mailto:kazemmdev@gmail.com) · [linkedin.com/in/kazem-mirzaei](https://www.linkedin.com/in/kazem-mirzaei) · [github.com/kazemmdev](https://github.com/kazemmdev)
 
-Full stack developer with 8+ years of experience building SaaS platforms, internal tools, and customer-facing apps for education, health, marketplace, and creator businesses. Co-founded GradeUp, a multi-tenant SaaS that sets up a new tutor's site, subdomain, and database in under 10 minutes. Has kept influencer-driven platforms online through campaign traffic spikes by moving them to stateless services, splitting out heavy workloads, and scaling on K3s. Works mostly in Laravel, Next.js, and Go, and recently .NET for enterprise workflow automation. Prefers to understand the business problem before choosing the technical fix.
+Full stack software engineer with 8+ years of experience taking products from requirements to production: system design, backend services, frontend, infrastructure, and deployment. Co-founded GradeUp, a multi-tenant education SaaS that sets up a tutor's site, subdomain, and isolated database in under 10 minutes. Kept influencer-driven platforms online through campaign traffic spikes by making services stateless, moving video transcoding to dedicated nodes, and scaling on K3s. Works mainly in Laravel, Next.js, PHP, TypeScript, and Go, and currently builds enterprise workflow automation on .NET. Starts from the business problem and its real constraints, then picks the simplest design the team can keep maintaining.
 
 ## Experience
 
@@ -16,14 +16,14 @@ Full stack developer with 8+ years of experience building SaaS platforms, intern
 
 Confidential · Automotive manufacturer · Enterprise workflow automation platform
 
-Full-time
+Full-time · Remote
 
 - Building an internal business process automation platform on .NET, ABP Framework, and Elsa Workflows.
 - Designed role-based approval flows with escalation timers, a shared task inbox, and append-only audit records for every decision.
 - Built the user dashboard in Next.js on a separate read model with Redis caching, so list pages stay fast as approvals pile up.
-- Wrote the team's engineering guidelines for .NET 10 and Laravel 11+.
+- Wrote the team's engineering guidelines for .NET 10.
 
-**Tech stack:** C#, .NET, ABP Framework, Elsa Workflows, EF Core, PostgreSQL, Redis, Hangfire, Next.js, React, K3s
+**Tech stack:** C#, .NET, ABP Framework, Elsa Workflows, EF Core, SQL Server, Redis, Hangfire, Next.js, React, K3s
 
 ### Co-Founder & Lead Full Stack Engineer
 
@@ -147,7 +147,7 @@ Contract · Remote (France)
 
 Torotazeh · Location-based fresh produce marketplace
 
-Contract · Remote (Iran)
+Contract · Remote
 
 - Built a location-aware marketplace from scratch that connects buyers with nearby producers and books same-day couriers.
 - Owned the Laravel backend, Nuxt.js frontend, payments, and the separate admin and producer dashboards.
@@ -223,7 +223,7 @@ Architecture: Multi-tenant SaaS, monolith-to-microservices migration, stateless 
 
 Workflow automation: Elsa Workflows, Hangfire, approval flows, audit trails
 
-Databases & storage: MySQL, PostgreSQL, Redis, S3 object storage
+Databases & storage: MySQL, PostgreSQL, SQL Server, Redis, S3 object storage
 
 DevOps: Docker (multi-stage builds), Docker Compose, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana, Hetzner
 

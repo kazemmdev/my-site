@@ -3,6 +3,7 @@ import { SerwistProvider } from "@serwist/next/react"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 
+import { RESUME_PROFILE } from "@/config/resume"
 import { inter } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import ThemeProvider from "@/components/providers/theme-provider"
@@ -16,7 +17,7 @@ import QueryProvider from "@/components/providers/query-provider"
 const APP_NAME = "kazemmdev"
 const APP_DEFAULT_TITLE = "Kazem | Portfolio"
 const APP_TITLE_TEMPLATE = "%s - Kazem"
-const APP_DESCRIPTION = "Full-Stack Web Developer | PHP, Node, Go, React, Docker"
+const APP_DESCRIPTION = RESUME_PROFILE.headline
 
 const DEFAULT_OG_IMAGE = "/bg-1.jpg"
 

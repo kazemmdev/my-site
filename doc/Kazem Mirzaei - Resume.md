@@ -4,7 +4,7 @@ Senior Full Stack Developer · SaaS & Multi-tenant Platforms · Laravel, Next.js
 
 Turkey · Open to remote (UTC+3) · [kazemm.dev](https://kazemm.dev) · [kazemmdev@gmail.com](mailto:kazemmdev@gmail.com) · [linkedin.com/in/kazem-mirzaei](https://www.linkedin.com/in/kazem-mirzaei) · [github.com/kazemmdev](https://github.com/kazemmdev)
 
-Full stack developer with 8+ years building SaaS platforms and customer-facing apps for education, health, and marketplace businesses. Co-founded GradeUp, a multi-tenant SaaS that sets up a new tutor in under 10 minutes, and kept influencer-driven platforms online through campaign traffic spikes.
+Full stack software engineer with 8+ years taking SaaS products from requirements to production, across system design, backend, frontend, and infrastructure. Co-founded GradeUp, a multi-tenant education SaaS that sets up a new tutor in under 10 minutes, and kept influencer-driven platforms online through campaign traffic spikes.
 
 ## Experience
 
@@ -85,7 +85,7 @@ Frameworks: Laravel, Next.js, React, Nuxt.js, Node.js, React Native, .NET, ABP F
 
 Architecture: Multi-tenant SaaS, microservices, stateless services, DDD, queues and background jobs, caching
 
-Data: MySQL, PostgreSQL, Redis, S3
+Data: MySQL, PostgreSQL, SQL Server, Redis, S3
 
 DevOps: Docker, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana
 

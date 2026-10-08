@@ -22,6 +22,8 @@ export async function GET(req: NextRequest) {
     { url: `${base}/`, changeFrequency: "monthly", priority: 1.0 },
     { url: `${base}/skills`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/resume`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/cv`, changeFrequency: "monthly", priority: 0.7 },
     ...articles.map(a => ({
       url: `${base}/blog/${a.slug}`,
       lastModified: a.edited_at ?? a.published_at,
