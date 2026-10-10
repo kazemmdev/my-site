@@ -4,7 +4,7 @@ Senior Full Stack Developer · SaaS & Multi-tenant Platforms · Laravel, Next.js
 
 Turkey · Open to remote (UTC+3) · [kazemm.dev](https://kazemm.dev) · [kazemmdev@gmail.com](mailto:kazemmdev@gmail.com) · [linkedin.com/in/kazem-mirzaei](https://www.linkedin.com/in/kazem-mirzaei) · [github.com/kazemmdev](https://github.com/kazemmdev)
 
-Full stack software engineer with 8+ years taking SaaS products from requirements to production, across system design, backend, frontend, and infrastructure. Co-founded GradeUp, a multi-tenant education SaaS that sets up a new tutor in under 10 minutes, and kept influencer-driven platforms online through campaign traffic spikes.
+Senior full stack engineer with 8+ years of experience taking SaaS products from requirements to production, covering system design, backend services, frontend, and infrastructure. Co-founder of GradeUp, a multi-tenant education platform, and engineering lead on consumer platforms built to handle traffic spikes from influencer campaigns.
 
 ## Experience
 
@@ -31,13 +31,13 @@ Nov 2025 - Mar 2026
 
 ### Full Stack Developer, Mobile & AI · Tidalflow
 
-Aug 2025 - Dec 2025
+Sep 2025 - Dec 2025
 
-- Shipped a React Native app to the App Store with a Node.js and Prisma backend and prompts for its AI engine.
+- Built photo meal logging, AI meal plans, and real-time chat in React Native, with a Node.js, Prisma, and Supabase API.
 
-### Full Stack Developer · Upwork
+### Freelance Full Stack Developer · Upwork
 
-May 2023 - Jun 2025
+Apr 2023 - Jun 2025
 
 - Completed 10+ full stack projects for international clients with a 100% Job Success Score.
 - Rebuilt an influencer's yoga platform, migrating legacy student and course data and adding protected video streaming.
@@ -52,7 +52,7 @@ Dec 2022 - Apr 2025
 - Tuned background jobs with priority queues, batched notifications, and retries with backoff.
 - Improved Next.js load time and SEO for blog and course pages with server rendering and image optimization.
 
-### Full Stack Developer · Lazo
+### Full Stack Developer · Lazo (via Upwork)
 
 Apr 2023 - Nov 2024
 
@@ -81,11 +81,11 @@ Oct 2017 - Nov 2018
 
 Languages: PHP, TypeScript, JavaScript, Go, C#
 
-Frameworks: Laravel, Next.js, React, Nuxt.js, Node.js, React Native, .NET, ABP Framework, Elsa Workflows
+Frameworks: Laravel, Next.js, React, Nuxt.js, Node.js, Express, React Native, Expo, .NET, ABP Framework, Elsa Workflows
 
 Architecture: Multi-tenant SaaS, microservices, stateless services, DDD, queues and background jobs, caching
 
-Data: MySQL, PostgreSQL, SQL Server, Redis, S3
+Data: MySQL, PostgreSQL, SQL Server, Supabase, Redis, S3
 
 DevOps: Docker, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana
 
@@ -93,4 +93,4 @@ Integrations: Stripe Connect, WebSockets, PubNub, Customer.io, FFmpeg video stre
 
 ## Education
 
-### M.Sc. in Systems Engineering · University of Tehran - 2017
+### M.Sc. in Systems Engineering · University of Tehran - 2015 – 2018

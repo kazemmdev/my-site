@@ -6,7 +6,7 @@ Turkey · Open to remote (UTC+3)
 
 [kazemm.dev](https://kazemm.dev) · [kazemmdev@gmail.com](mailto:kazemmdev@gmail.com) · [linkedin.com/in/kazem-mirzaei](https://www.linkedin.com/in/kazem-mirzaei) · [github.com/kazemmdev](https://github.com/kazemmdev)
 
-Full stack software engineer with 8+ years of experience taking products from requirements to production: system design, backend services, frontend, infrastructure, and deployment. Co-founded GradeUp, a multi-tenant education SaaS that sets up a tutor's site, subdomain, and isolated database in under 10 minutes. Kept influencer-driven platforms online through campaign traffic spikes by making services stateless, moving video transcoding to dedicated nodes, and scaling on K3s. Works mainly in Laravel, Next.js, PHP, TypeScript, and Go, and currently builds enterprise workflow automation on .NET. Starts from the business problem and its real constraints, then picks the simplest design the team can keep maintaining.
+Senior full stack engineer with 8+ years of experience taking products from requirements to production, covering system design, backend services, frontend, infrastructure, and deployment. Co-founder of GradeUp, a multi-tenant education platform for tutors and course creators, and engineering lead on consumer platforms built to handle traffic spikes from influencer campaigns. Works primarily with Laravel, Next.js, TypeScript, and Go, and currently builds enterprise workflow automation on .NET for an automotive manufacturer. Approaches each project from the business problem and its constraints, and favors designs the team can maintain as the product grows.
 
 ## Experience
 
@@ -64,7 +64,7 @@ Contract · Remote (Turkey)
 
 Beleb Software
 
-Contract · Remote (Philippines)
+Contract via Upwork · Remote (Philippines)
 
 - Fixed performance and rendering problems in React components of a live production app.
 - Shipped enhancements requested by the design team and connected them to the existing Laravel API.
@@ -73,24 +73,27 @@ Contract · Remote (Philippines)
 
 ### Full Stack Developer, Mobile & AI
 
-(5 months)Aug 2025 - Dec 2025
+(4 months)Sep 2025 - Dec 2025
 
-Tidalflow · AI-powered mobile app
+Tidalflow · AI health companion app for nutrition tracking and meal planning
 
 Contract · Remote (Amsterdam, Netherlands)
 
-- Shipped a React Native app to the Apple App Store, from feature work through store review and release.
-- Built the Node.js and Prisma backend behind the app's API.
-- Wrote and tuned the prompts that connect the app's main features to its AI engine.
-- Helped teammates solve React Native layout and UI implementation problems.
+- Worked across the Expo app and the Node.js API of an AI health companion live on the App Store, merging 110+ pull requests in a distributed team.
+- Rebuilt the in-app chat with the AI coach on Supabase Realtime, with infinite scroll, image and meal-log messages, and markdown replies.
+- Built photo-based meal logging that turns a meal photo into macros on the daily nutrition tracker, plus weight tracking with charts.
+- Built AI-generated meal plans and custom meals with LLM prompts and structured output schemas on Orq.ai, a nightly generation job, and debounced Realtime listeners that regenerate plans when users change their answers.
+- Restructured the Express API into feature modules with file-based routing, Zod-validated endpoints, Swagger docs, and Vitest and Supertest tests.
+- Added community threads with replies, likes, and filters, an in-app notification system, and daily check-ins with streaks and timezone-aware stats.
+- Added Google and Apple sign-in through Supabase Auth, linking existing accounts to their new identities, and wrote Supabase migrations and row-level security policies.
 
-**Tech stack:** React Native, TypeScript, Node.js, Prisma, LLM prompt engineering
+**Tech stack:** React Native, Expo, TypeScript, Zustand, TanStack Query, Node.js, Express, Prisma, PostgreSQL, Supabase, Zod, Orq.ai, Vitest, Sentry, PostHog
 
-### Full Stack Developer
+### Freelance Full Stack Developer
 
-(2 years 2 months)May 2023 - Jun 2025
+(2 years 3 months)Apr 2023 - Jun 2025
 
-Upwork · International freelance clients
+Upwork · Short-term projects for international clients
 
 Freelance · Remote
 
@@ -130,7 +133,7 @@ Contract · Remote (Iran)
 
 Lazo · Social platform with in-app chat, missions, and payments
 
-Contract · Remote (France)
+Contract via Upwork · Remote (France)
 
 - Cut page load time from about 8 seconds to under 1 second by refactoring the Next.js app.
 - Audited the codebase, removed unused packages, and fixed dependency conflicts, which shortened build times.
@@ -213,27 +216,27 @@ Part-time and full-time · Tehran
 
 Languages: PHP, JavaScript, TypeScript, Go, C#
 
-Backend: Laravel, Laravel Echo, Node.js, Prisma, .NET, ABP Framework, EF Core, REST APIs
+Backend: Laravel, Laravel Echo, Node.js, Express, Prisma, Zod, .NET, ABP Framework, EF Core, REST APIs, Swagger
 
 Frontend: React, Next.js, Vue.js, Nuxt.js, Material UI, next-intl, responsive design, accessibility, SEO
 
-Mobile: React Native, App Store release
+Mobile: React Native, Expo, Zustand, TanStack Query, App Store release
 
 Architecture: Multi-tenant SaaS, monolith-to-microservices migration, stateless services, DDD, queues and background jobs, caching, horizontal and vertical scaling
 
 Workflow automation: Elsa Workflows, Hangfire, approval flows, audit trails
 
-Databases & storage: MySQL, PostgreSQL, SQL Server, Redis, S3 object storage
+Databases & storage: MySQL, PostgreSQL, SQL Server, Supabase, Redis, S3 object storage
 
-DevOps: Docker (multi-stage builds), Docker Compose, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana, Hetzner
+DevOps: Docker (multi-stage builds), Docker Compose, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana, Sentry, Hetzner
 
 Payments & integrations: Stripe Connect, subscriptions, B2B payouts, Customer.io, PubNub, WebSockets
 
 Media & performance: FFmpeg, secure video streaming, PWAs, Lighthouse optimization
 
-AI: LLM integration, prompt engineering, RAG
+AI: LLM integration, prompt engineering, structured outputs, Orq.ai, RAG
 
-Practices: TDD, SOLID, code audits, technical documentation
+Practices: TDD, SOLID, Vitest, code audits, technical documentation
 
 Collaboration: Team leadership, Agile, cross-functional collaboration, UI/UX design
 
@@ -246,7 +249,7 @@ Collaboration: Team leadership, Agile, cross-functional collaboration, UI/UX des
 
 ### M.Sc. in Systems Engineering
 
-2017 - University of Tehran
+2015 – 2018 - University of Tehran
 
 ## Languages
 

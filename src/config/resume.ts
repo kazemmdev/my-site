@@ -40,7 +40,7 @@ export const RESUME_PROFILE = {
 }
 
 const EDUCATION = [
-  { degree: "M.Sc. in Systems Engineering", detail: "University of Tehran · 2017" }
+  { degree: "M.Sc. in Systems Engineering", detail: "University of Tehran · 2015 – 2018" }
 ]
 
 export const RESUME: ResumeDocument = {
@@ -48,7 +48,7 @@ export const RESUME: ResumeDocument = {
   title: "Resume",
   fileName: "Kazem Mirzaei - Resume.pdf",
   summary:
-    "Full stack software engineer with 8+ years taking SaaS products from requirements to production, across system design, backend, frontend, and infrastructure. Co-founded GradeUp, a multi-tenant education SaaS that sets up a new tutor in under 10 minutes, and kept influencer-driven platforms online through campaign traffic spikes.",
+    "Senior full stack engineer with 8+ years of experience taking SaaS products from requirements to production, covering system design, backend services, frontend, and infrastructure. Co-founder of GradeUp, a multi-tenant education platform, and engineering lead on consumer platforms built to handle traffic spikes from influencer campaigns.",
   showDuration: false,
   experience: [
     {
@@ -82,16 +82,16 @@ export const RESUME: ResumeDocument = {
     {
       title: "Full Stack Developer, Mobile & AI",
       company: "Tidalflow",
-      start: "2025-08",
+      start: "2025-09",
       end: "2025-12",
       bullets: [
-        "Shipped a React Native app to the App Store with a Node.js and Prisma backend and prompts for its AI engine."
+        "Built photo meal logging, AI meal plans, and real-time chat in React Native, with a Node.js, Prisma, and Supabase API."
       ]
     },
     {
-      title: "Full Stack Developer",
+      title: "Freelance Full Stack Developer",
       company: "Upwork",
-      start: "2023-05",
+      start: "2023-04",
       end: "2025-06",
       bullets: [
         "Completed 10+ full stack projects for international clients with a 100% Job Success Score.",
@@ -113,7 +113,7 @@ export const RESUME: ResumeDocument = {
     },
     {
       title: "Full Stack Developer",
-      company: "Lazo",
+      company: "Lazo (via Upwork)",
       start: "2023-04",
       end: "2024-11",
       bullets: [
@@ -154,14 +154,14 @@ export const RESUME: ResumeDocument = {
     {
       label: "Frameworks",
       items:
-        "Laravel, Next.js, React, Nuxt.js, Node.js, React Native, .NET, ABP Framework, Elsa Workflows"
+        "Laravel, Next.js, React, Nuxt.js, Node.js, Express, React Native, Expo, .NET, ABP Framework, Elsa Workflows"
     },
     {
       label: "Architecture",
       items:
         "Multi-tenant SaaS, microservices, stateless services, DDD, queues and background jobs, caching"
     },
-    { label: "Data", items: "MySQL, PostgreSQL, SQL Server, Redis, S3" },
+    { label: "Data", items: "MySQL, PostgreSQL, SQL Server, Supabase, Redis, S3" },
     { label: "DevOps", items: "Docker, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana" },
     {
       label: "Integrations",
@@ -177,7 +177,7 @@ export const CV: ResumeDocument = {
   title: "Curriculum Vitae",
   fileName: "Kazem Mirzaei - Senior Full Stack Engineer - CV.pdf",
   summary:
-    "Full stack software engineer with 8+ years of experience taking products from requirements to production: system design, backend services, frontend, infrastructure, and deployment. Co-founded GradeUp, a multi-tenant education SaaS that sets up a tutor's site, subdomain, and isolated database in under 10 minutes. Kept influencer-driven platforms online through campaign traffic spikes by making services stateless, moving video transcoding to dedicated nodes, and scaling on K3s. Works mainly in Laravel, Next.js, PHP, TypeScript, and Go, and currently builds enterprise workflow automation on .NET. Starts from the business problem and its real constraints, then picks the simplest design the team can keep maintaining.",
+    "Senior full stack engineer with 8+ years of experience taking products from requirements to production, covering system design, backend services, frontend, infrastructure, and deployment. Co-founder of GradeUp, a multi-tenant education platform for tutors and course creators, and engineering lead on consumer platforms built to handle traffic spikes from influencer campaigns. Works primarily with Laravel, Next.js, TypeScript, and Go, and currently builds enterprise workflow automation on .NET for an automotive manufacturer. Approaches each project from the business problem and its constraints, and favors designs the team can maintain as the product grows.",
   showDuration: true,
   experience: [
     {
@@ -256,7 +256,7 @@ export const CV: ResumeDocument = {
       company: "Beleb Software",
       start: "2025-11",
       end: "2025-12",
-      employment: "Contract · Remote (Philippines)",
+      employment: "Contract via Upwork · Remote (Philippines)",
       bullets: [
         "Fixed performance and rendering problems in React components of a live production app.",
         "Shipped enhancements requested by the design team and connected them to the existing Laravel API."
@@ -266,23 +266,42 @@ export const CV: ResumeDocument = {
     {
       title: "Full Stack Developer, Mobile & AI",
       company: "Tidalflow",
-      companyNote: "AI-powered mobile app",
-      start: "2025-08",
+      companyNote: "AI health companion app for nutrition tracking and meal planning",
+      start: "2025-07",
       end: "2025-12",
       employment: "Contract · Remote (Amsterdam, Netherlands)",
       bullets: [
-        "Shipped a React Native app to the Apple App Store, from feature work through store review and release.",
-        "Built the Node.js and Prisma backend behind the app's API.",
-        "Wrote and tuned the prompts that connect the app's main features to its AI engine.",
-        "Helped teammates solve React Native layout and UI implementation problems."
+        "Worked across the Expo app and the Node.js API of an AI health companion live on the App Store, merging 110+ pull requests in a distributed team.",
+        "Rebuilt the in-app chat with the AI coach on Supabase Realtime, with infinite scroll, image and meal-log messages, and markdown replies.",
+        "Built photo-based meal logging that turns a meal photo into macros on the daily nutrition tracker, plus weight tracking with charts.",
+        "Built AI-generated meal plans and custom meals with LLM prompts and structured output schemas on Orq.ai, a nightly generation job, and debounced Realtime listeners that regenerate plans when users change their answers.",
+        "Restructured the Express API into feature modules with file-based routing, Zod-validated endpoints, Swagger docs, and Vitest and Supertest tests.",
+        "Added community threads with replies, likes, and filters, an in-app notification system, and daily check-ins with streaks and timezone-aware stats.",
+        "Added Google and Apple sign-in through Supabase Auth, linking existing accounts to their new identities, and wrote Supabase migrations and row-level security policies."
       ],
-      stack: ["React Native", "TypeScript", "Node.js", "Prisma", "LLM prompt engineering"]
+      stack: [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Zustand",
+        "TanStack Query",
+        "Node.js",
+        "Express",
+        "Prisma",
+        "PostgreSQL",
+        "Supabase",
+        "Zod",
+        "Orq.ai",
+        "Vitest",
+        "Sentry",
+        "PostHog"
+      ]
     },
     {
-      title: "Full Stack Developer",
+      title: "Freelance Full Stack Developer",
       company: "Upwork",
-      companyNote: "International freelance clients",
-      start: "2023-05",
+      companyNote: "Short-term projects for international clients",
+      start: "2023-04",
       end: "2025-06",
       employment: "Freelance · Remote",
       bullets: [
@@ -346,7 +365,7 @@ export const CV: ResumeDocument = {
       companyNote: "Social platform with in-app chat, missions, and payments",
       start: "2023-04",
       end: "2024-11",
-      employment: "Contract · Remote (France)",
+      employment: "Contract via Upwork · Remote (France)",
       bullets: [
         "Cut page load time from about 8 seconds to under 1 second by refactoring the Next.js app.",
         "Audited the codebase, removed unused packages, and fixed dependency conflicts, which shortened build times.",
@@ -429,14 +448,15 @@ export const CV: ResumeDocument = {
     { label: "Languages", items: "PHP, JavaScript, TypeScript, Go, C#" },
     {
       label: "Backend",
-      items: "Laravel, Laravel Echo, Node.js, Prisma, .NET, ABP Framework, EF Core, REST APIs"
+      items:
+        "Laravel, Laravel Echo, Node.js, Express, Prisma, Zod, .NET, ABP Framework, EF Core, REST APIs, Swagger"
     },
     {
       label: "Frontend",
       items:
         "React, Next.js, Vue.js, Nuxt.js, Material UI, next-intl, responsive design, accessibility, SEO"
     },
-    { label: "Mobile", items: "React Native, App Store release" },
+    { label: "Mobile", items: "React Native, Expo, Zustand, TanStack Query, App Store release" },
     {
       label: "Architecture",
       items:
@@ -446,11 +466,14 @@ export const CV: ResumeDocument = {
       label: "Workflow automation",
       items: "Elsa Workflows, Hangfire, approval flows, audit trails"
     },
-    { label: "Databases & storage", items: "MySQL, PostgreSQL, SQL Server, Redis, S3 object storage" },
+    {
+      label: "Databases & storage",
+      items: "MySQL, PostgreSQL, SQL Server, Supabase, Redis, S3 object storage"
+    },
     {
       label: "DevOps",
       items:
-        "Docker (multi-stage builds), Docker Compose, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana, Hetzner"
+        "Docker (multi-stage builds), Docker Compose, Kubernetes (K3s), GitHub Actions, CI/CD, Grafana, Sentry, Hetzner"
     },
     {
       label: "Payments & integrations",
@@ -460,8 +483,8 @@ export const CV: ResumeDocument = {
       label: "Media & performance",
       items: "FFmpeg, secure video streaming, PWAs, Lighthouse optimization"
     },
-    { label: "AI", items: "LLM integration, prompt engineering, RAG" },
-    { label: "Practices", items: "TDD, SOLID, code audits, technical documentation" },
+    { label: "AI", items: "LLM integration, prompt engineering, structured outputs, Orq.ai, RAG" },
+    { label: "Practices", items: "TDD, SOLID, Vitest, code audits, technical documentation" },
     {
       label: "Collaboration",
       items: "Team leadership, Agile, cross-functional collaboration, UI/UX design"
