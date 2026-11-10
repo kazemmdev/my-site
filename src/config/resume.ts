@@ -82,7 +82,7 @@ export const RESUME: ResumeDocument = {
     {
       title: "Full Stack Developer, Mobile & AI",
       company: "Tidalflow",
-      start: "2025-09",
+      start: "2025-07",
       end: "2025-12",
       bullets: [
         "Built photo meal logging, AI meal plans, and real-time chat in React Native, with a Node.js, Prisma, and Supabase API."
